@@ -1,0 +1,65 @@
+package com.capgemini.storemanagement.dto;
+
+public class Products {
+	
+		
+		private Integer productId;
+		
+		private String brand;
+		
+		private Double price;
+		
+		private String warranty;
+		
+		private Integer stocks;
+		
+		
+
+
+		public Integer getProductId() {
+			return productId;
+		}
+
+		public void setProductId(Integer productId) {
+			this.productId = productId;
+		}
+
+		public String getBrand() {
+			return brand;
+		}
+
+		public void setBrand(String brand) {
+			this.brand = brand;
+		}
+
+		public Double getPrice() {
+			return price;
+		}
+
+		public void setPrice(Double price) {
+			this.price = price;
+		}
+
+		public String getWarranty() {
+			return warranty;
+		}
+
+		public void setWarranty(String warranty) {
+			this.warranty = warranty;
+		}
+
+		public Integer getStocks() {
+			return stocks;
+		}
+
+		public void setStocks(Integer stocks) {
+			this.stocks = stocks;
+		}
+
+		@Override
+		public String toString() {
+			return "Products [productId=" + productId + ", brand=" + brand + ", price=" + price + ", warranty="
+					+ warranty + ", stocks=" + stocks + "]";
+		}
+
+}

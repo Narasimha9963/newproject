@@ -1,0 +1,48 @@
+package com.capgemini.storemanagement.service;
+
+import java.util.List;
+
+import com.capgemini.storemanagement.dto.Orders;
+import com.capgemini.storemanagement.dto.Products;
+import com.capgemini.storemanagement.dto.StoreUnit;
+import com.capgemini.storemanagement.dto.Users;
+
+public class DealerServiceImpl  implements DealerService{
+
+	@Override
+	public Users loginDealer(String userId, String password) {
+		
+		return null;
+	}
+
+	@Override
+	public boolean makeOrder(Orders order) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean deleteOrder(Integer orderId) {
+		
+		return false;
+	}
+
+	@Override
+	public List<Products> showAllproducts() {
+		
+		return null;
+	}
+
+	@Override
+	public List<StoreUnit> viewMyStore(Integer storeId) {
+		
+		return null;
+	}
+
+	@Override
+	public List<Orders> viewMyOrders(String userId) {
+		
+		return null;
+	}
+
+}

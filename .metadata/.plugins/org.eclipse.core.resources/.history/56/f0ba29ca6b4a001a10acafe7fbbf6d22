@@ -1,0 +1,78 @@
+package com.capgemini.storemanagement.service;
+
+import java.util.List;
+
+import com.capgemini.storemanagement.dto.Orders;
+import com.capgemini.storemanagement.dto.Products;
+import com.capgemini.storemanagement.dto.StoreUnit;
+import com.capgemini.storemanagement.dto.Users;
+
+public class ManufactureServiceImpl implements ManufactureService {
+
+	@Override
+	public Users loginManufact(String userId, String password) {
+		
+		return null;
+	}
+
+	@Override
+	public boolean addDealer(Users dealer) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean modifyDealer(Users dealer) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean removeDealer(String dealerId) {
+		
+		return false;
+	}
+
+	@Override
+	public List<Users> viewAllDealers() {
+		
+		return null;
+	}
+
+	@Override
+	public boolean addProduct(Products product) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean modifyProduct(Products product) {
+		
+		return false;
+	}
+
+	@Override
+	public boolean removeProduct(Integer productId) {
+		
+		return false;
+	}
+
+	@Override
+	public List<Products> viewAllProducts() {
+		
+		return null;
+	}
+
+	@Override
+	public List<Orders> viewAllOrders() {
+		
+		return null;
+	}
+
+	@Override
+	public List<StoreUnit> viewStore() {
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,67 @@
+package com.capgemini.storemanagement.dao;
+
+import java.util.List;
+
+import com.capgemini.storemanagement.dto.Orders;
+import com.capgemini.storemanagement.dto.Products;
+import com.capgemini.storemanagement.dto.StoreUnit;
+import com.capgemini.storemanagement.dto.Users;
+
+public class ManufactureDAOImpl implements ManufactureDAO {
+
+	public Users loginManufact(String userId, String password) {
+		
+		return null;
+	}
+
+	public boolean addDealer(Users dealer) {
+		
+		return false;
+	}
+
+	public boolean modifyDealer(Users dealer) {
+		
+		return false;
+	}
+
+	public boolean removeDealer(String dealerId) {
+		
+		return false;
+	}
+
+	public List<Users> viewAllDealers() {
+		
+		return null;
+	}
+
+	public boolean addProduct(Products product) {
+		
+		return false;
+	}
+
+	public boolean modifyProduct(Products product) {
+		
+		return false;
+	}
+
+	public boolean removeProduct(Integer productId) {
+		
+		return false;
+	}
+
+	public List<Products> viewAllProducts() {
+		
+		return null;
+	}
+
+	public List<Orders> viewAllOrders() {
+		
+		return null;
+	}
+
+	public List<StoreUnit> viewStore() {
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,142 @@
+package com.capgemini.storemanagement.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.capgemini.storemanagement.dto.Orders;
+import com.capgemini.storemanagement.dto.Products;
+import com.capgemini.storemanagement.dto.StoreUnit;
+import com.capgemini.storemanagement.dto.Users;
+
+public class DealerDAOImpl implements DealerDAO {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	Statement stmt = null;
+
+	
+
+	public boolean makeOrder(Orders order) {
+		boolean isAdded = false;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			con = DriverManager.getConnection(dburl);
+			String qry = " insert into  order_details values (?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(qry);
+			pstmt.setInt(1, order.getReferenceId());
+			pstmt.setString(2, order.getLocation());
+			pstmt.setInt(3, order.getOrderId());
+			pstmt.setInt(4, order.getProductId());
+			pstmt.setInt(5, order.getQuantity());
+			pstmt.setString(6, order.getUserId());
+
+			int r = pstmt.executeUpdate();
+			System.out.println(r);
+			if (r != 0) {
+				isAdded = true;
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+
+		return isAdded;
+	}
+
+	public boolean deleteOrder(Integer orderId) {
+		boolean isDeleted=false;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			con = DriverManager.getConnection(dburl);
+			String qry = "delete from order_details where orderId=?";
+			pstmt = con.prepareStatement(qry);
+			pstmt.setInt(1, orderId);
+			int n=pstmt.executeUpdate();
+			if(n!=0)
+				isDeleted=true;
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return isDeleted;
+	}
+
+	public List<String> showAllproducts() {
+		List<String> productlist = new ArrayList<>();
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			Connection con = DriverManager.getConnection(dburl);
+			String qry = "select * from product_details";
+			Statement stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(qry);
+
+			while (rs.next()) {
+				productlist.add(rs.getString("brand"));
+			}
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return productlist;
+	}
+
+	public List<Integer> viewMyStore(Integer storeId) {
+		List<Integer> storelist = new ArrayList<Integer>();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			Connection con = DriverManager.getConnection(dburl);
+			String qry = "select * from storeunit where storeId='" + storeId + "'";
+			Statement stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(qry);
+
+			while (rs.next()) {
+				storelist.add(rs.getInt("no_of_items"));
+				storelist.add(rs.getInt("minimumStockMantain"));
+			}
+
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return storelist;
+	}
+
+	public List<String> viewMyOrders(String userId) {
+		List<String> orderlist = new ArrayList<>();
+		;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			Connection con = DriverManager.getConnection(dburl);
+			String qry = "select * from order_details where userId='" + userId + "'";
+			Statement stmt = con.createStatement();
+
+			ResultSet rs = stmt.executeQuery(qry);
+
+			while (rs.next()) {
+				orderlist.add(rs.getString("location"));
+				orderlist.add(rs.getString("qantity"));
+				orderlist.add(rs.getString("productId"));
+				
+			}
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return orderlist;
+	}
+
+}

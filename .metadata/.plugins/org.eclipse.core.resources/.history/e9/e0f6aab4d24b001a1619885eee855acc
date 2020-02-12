@@ -1,0 +1,10 @@
+package com.capgemini.storemanagement.util;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+public class PasswordValidation {
+	public static void passwordValidation() {
+		BCrypt.checkpw("qweerty", PasswordEncoder.passwordEncoder(password))
+	}
+
+}

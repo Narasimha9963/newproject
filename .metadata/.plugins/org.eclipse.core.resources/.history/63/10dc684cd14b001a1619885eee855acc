@@ -1,0 +1,11 @@
+package com.capgemini.storemanagement.util;
+
+import org.mindrot.jbcrypt.BCrypt;
+
+public class PasswordEncoder {
+	
+	public static void passwordEncoder() {
+		BCrypt.hashpw("qwerty", BCrypt.gensalt());
+	}
+
+}

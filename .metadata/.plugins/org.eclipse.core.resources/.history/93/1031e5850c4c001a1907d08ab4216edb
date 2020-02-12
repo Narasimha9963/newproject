@@ -1,0 +1,213 @@
+package com.capgemini.storemanagement.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+import com.capgemini.storemanagement.dao.AdminDAOImpl;
+import com.capgemini.storemanagement.dao.DealerDAOImpl;
+import com.capgemini.storemanagement.dao.ManufactureDAOImpl;
+import com.capgemini.storemanagement.dto.Orders;
+import com.capgemini.storemanagement.dto.Products;
+import com.capgemini.storemanagement.dto.Users;
+
+public class StoreController {
+//	static Logger log = LogManager.getLogger("Narasimha");
+//	static Scanner scan;
+//
+//	public static void main(String[] args) {
+//		scan = new Scanner(System.in);
+//
+//		log.info("select from the following options:");
+//		log.info("For login into system as admin press 1 ");
+//		log.info("for Manufacture press 2");
+//		log.info("For Dealer press 3");
+//
+//		int choice = scan.nextInt();
+//		do {
+//		case 1:
+//			System.out.println("which type u want to login");
+//			System.out.println("Admin operations are:");
+//			System.out.println("1.login");
+//			System.out.println("2.addmanufacture");
+//			System.out.println("3.delete");
+//			System.out.println("4.update");
+//			System.out.println("5.view");
+//			int i = scan.nextInt();
+//			
+//		case 2:
+//			System.out.println("which type u want to login");
+//			System.out.println("Manufacture operations are:");
+//			System.out.println("1.login");
+//			System.out.println("2.adddealer");
+//			System.out.println("3.modifydealer");
+//			System.out.println("4.removedealer");
+//			System.out.println("5.viewallMydealers");
+//			System.out.println("6.addproducts");
+//			System.out.println("7.modifyproducts");
+//			System.out.println("8.removeproducts");
+//			System.out.println("9.viewallproducts");
+//			System.out.println("10.viewallorders");
+//			System.out.println("11.viewstore");
+//
+//			int x = scan.nextInt();
+//			switch (x) {
+//			case 1: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//
+//				break;
+//			}
+//			case 2: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				System.out.println(m.addDealer(new Users("4", "red", " bfhf", " dfgd", "bg", "bfhf")));
+//
+//				break;
+//			}
+//			case 3: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				m.modifyDealer("9");
+//
+//				break;
+//			}
+//			case 4: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				m.removeDealer("8");
+//
+//				break;
+//			}
+//			case 5: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				List<String> n = m.viewAllDealers("manufacture");
+//
+//				System.out.println(n);
+//				break;
+//			}
+//			case 6: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				m.addProduct(new Products(4, "puma", 45.6, "one", 5));
+//
+//				break;
+//			}
+//			case 7: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//
+//				boolean b = m.modifyProduct("1");
+//				System.out.println(b);
+//
+//				break;
+//			}
+//			case 8: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				boolean b = m.removeProduct(1);
+//				System.out.println(b);
+//				break;
+//			}
+//			case 9: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				List<String> n = m.viewAllProducts();
+//				System.out.println(n);
+//
+//				break;
+//			}
+//			case 10: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				List<String> n = m.viewAllOrders();
+//				System.out.println(n);
+//
+//				break;
+//			}
+//			case 11: {
+//				ManufactureDAOImpl m = new ManufactureDAOImpl();
+//				List<String> n = m.viewStore();
+//				System.out.println(n);
+//
+//				break;
+//			}
+//			}
+//
+//			break;
+//
+//		case 3: {
+//			System.out.println("which type u want to login");
+//			System.out.println("Dealer operations are:");
+//			System.out.println("1.login");
+//			System.out.println("2.makeorders");
+//			System.out.println("3.deleteorder");
+//			System.out.println("4.showallmyproducts");
+//			System.out.println("5.viewmystore");
+//			System.out.println("6.viewmyorders");
+//			int j = scan.nextInt();
+//			switch (j) {
+//			case 1: {
+//				DealerDAOImpl d = new DealerDAOImpl();
+//
+//				break;
+//			}
+//			case 2: {
+//				DealerDAOImpl d = new DealerDAOImpl();
+//				boolean b = d.makeOrder(new Orders(2, 5, 76, 10, "bnglr", "manu"));
+//
+//				break;
+//			}
+//			case 3: {
+//				DealerDAOImpl d = new DealerDAOImpl();
+//				boolean b = d.deleteOrder(1);
+//				System.out.println(b);
+//
+//				break;
+//			}
+//			case 4: {
+//				DealerDAOImpl d = new DealerDAOImpl();
+//				List<String> s = d.showAllproducts();
+//				for (String str : s) {
+//					System.out.println(str);
+//
+//				}
+//
+//				break;
+//			}
+//			case 5: {
+//				DealerDAOImpl d = new DealerDAOImpl();
+//				List<Integer> k = d.viewMyStore(1);
+//				for (Integer str : k) {
+//					System.out.println(str);
+//
+//				}
+//
+//				break;
+//			}
+//			case 6: {
+//				DealerDAOImpl d = new DealerDAOImpl();
+//				List<String> s = d.viewMyOrders("manu");
+//
+//				for (String str : s) {
+//					System.out.println(str);
+//
+//				}
+//
+//				break;
+//			}
+//			default: {
+//				System.out.println("Invalid Choice...");
+//				break;
+//			}
+//
+//			}
+//			break;
+//		}
+//
+//		default:
+//			log.info(" sorry invalid credentials! give correct option for login");
+//
+//		}
+//
+//	}
+//}
+//
+//
+//
+//
+//
+}

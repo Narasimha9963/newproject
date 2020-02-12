@@ -1,0 +1,18 @@
+package com.capgemini.storemanagement.controller;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import com.capgemini.storemanagement.dto.Orders;
+
+public class Add {
+public static void main(String[] args) {
+	
+	boolean b=makeOrder(new Orders(78,23,22,23,"bnglr","manu"));
+	System.out.println(b);
+	
+}
+
+
+}

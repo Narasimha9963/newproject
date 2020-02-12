@@ -1,0 +1,16 @@
+package com.capgemini.storemanagement.factory;
+
+import com.capgemini.storemanagement.dao.AdminDAOImpl;
+
+public class Factory {
+	
+	private Factory() {
+		
+	}
+	
+	public static AdminDAO  getAdmDao() {
+		
+		AdminDAO sdao=new AdminDAOImpl();
+	}
+
+}

@@ -1,0 +1,45 @@
+package com.capgemini.storemanagement.controller;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import com.capgemini.storemanagement.dto.Orders;
+
+public class Add {
+public static void main(String[] args) {
+	
+	makeOrder(new Orders(99,23,22,23,"bnglr","manu"))
+	
+	
+}
+
+
+public static boolean makeOrder(Orders order) {
+	boolean isAdded = false;
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+		String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+		Connection con = DriverManager.getConnection(dburl);
+		String qry = " insert into  order_details values (?,?,?,?,?,?)";
+		PreparedStatement pstmt = con.prepareStatement(qry);
+		pstmt.setInt(1, order.getReferenceId());
+		pstmt.setString(2, order.getLocation());
+		pstmt.setInt(3, order.getOrderId());
+		pstmt.setInt(4, order.getProductId());
+		pstmt.setInt(5, order.getQuantity());
+		pstmt.setString(6, order.getUserId());
+
+		int r = pstmt.executeUpdate();
+		System.out.println(r);
+		if (r != 0) {
+			isAdded = true;
+		}
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}
+
+	return isAdded;
+}
+}

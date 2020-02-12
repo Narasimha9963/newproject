@@ -1,0 +1,178 @@
+package com.capgemini.storemanagement.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+import com.capgemini.storemanagement.dao.AdminDAOImpl;
+import com.capgemini.storemanagement.dao.DealerDAOImpl;
+import com.capgemini.storemanagement.dto.Users;
+
+public class StoreController {
+	static Logger log = LogManager.getLogger("Narasimha");
+	static Scanner scan;
+
+	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+		log.info("select from the following options:");
+		log.info("For login into system as admin press 1 ");
+		log.info("for Manufacture press 2");
+		log.info("For Dealer press 3");
+
+		int choice = scan.nextInt();
+		switch (choice) {
+		case 1:
+			System.out.println("which type u want to login");
+			System.out.println("Admin operations are:");
+			System.out.println("1.login");
+			System.out.println("2.addmanufacture");
+			System.out.println("3.delete");
+			System.out.println("4.update");
+			System.out.println("5.view");
+			int i = scan.nextInt();
+			switch (i) {
+			case 1: {
+				AdminController a1 = new AdminController();
+				a1.loginAdminService(new Users());
+
+				break;
+			}
+			case 2: {
+
+				// AdminController a2=new AdminController();
+				AdminDAOImpl a2 = new AdminDAOImpl();
+
+				System.out.println(a2.addManufactur(new Users("6", "sdfg", "sdfg", "sdfgh", "cvbn", "dfgh")));
+				break;
+			}
+			case 3: {
+				// AdminController a3=new AdminController();
+				AdminDAOImpl a3 = new AdminDAOImpl();
+				boolean delete = a3.deleteManufactur("1");
+				System.out.println("record deleted:" + delete);
+
+				break;
+			}
+			case 5: {
+				// AdminController a4=new AdminController();
+				AdminDAOImpl a4 = new AdminDAOImpl();
+				boolean update = a4.updateManufactur("24");
+				System.out.println("record update:" + update);
+				break;
+			}
+			case 4: {
+				// AdminController a5=new AdminController();
+				AdminDAOImpl a5 = new AdminDAOImpl();
+				// System.out.println("asdfghj");
+				List<String> result = a5.viewAllManufacturs("manufacture");
+				for (String str : result) {
+					System.out.println(str);
+
+				}
+				break;
+
+			}
+			default: {
+				System.out.println("Invalid Choice...");
+				break;
+			}
+			}
+
+			break;
+		case 2:
+			System.out.println("which type u want to login");
+			System.out.println("Manufacture operations are:");
+			System.out.println("1.login");
+			System.out.println("2.makeorders");
+			System.out.println("3.deleteorder");
+			System.out.println("4.showallmyproducts");
+			System.out.println("5.viewmystore");
+			System.out.println("6.viewmyorders");
+			int x = scan.nextInt();
+			switch (x) {
+			case 1: {
+				DealerDAOImpl d = new DealerDAOImpl();
+
+				break;
+			}
+
+				break;
+
+			case 3: {
+				System.out.println("which type u want to login");
+				System.out.println("Dealer operations are:");
+				System.out.println("1.login");
+				System.out.println("2.makeorders");
+				System.out.println("3.deleteorder");
+				System.out.println("4.showallmyproducts");
+				System.out.println("5.viewmystore");
+				System.out.println("6.viewmyorders");
+				int j = scan.nextInt();
+				switch (j) {
+				case 1: {
+					DealerDAOImpl d = new DealerDAOImpl();
+
+					break;
+				}
+				case 2: {
+					DealerDAOImpl d = new DealerDAOImpl();
+
+					break;
+				}
+				case 3: {
+					DealerDAOImpl d = new DealerDAOImpl();
+					boolean b = d.deleteOrder(1);
+					System.out.println(b);
+
+					break;
+				}
+				case 4: {
+					DealerDAOImpl d = new DealerDAOImpl();
+					List<String> s = d.showAllproducts();
+					for (String str : s) {
+						System.out.println(str);
+
+					}
+
+					break;
+				}
+				case 5: {
+					DealerDAOImpl d = new DealerDAOImpl();
+					List<Integer> k = d.viewMyStore(1);
+					for (Integer str : k) {
+						System.out.println(str);
+
+					}
+
+					break;
+				}
+				case 6: {
+					DealerDAOImpl d = new DealerDAOImpl();
+					List<String> s = d.viewMyOrders("manu");
+
+					for (String str : s) {
+						System.out.println(str);
+
+					}
+
+					break;
+				}
+				default: {
+					System.out.println("Invalid Choice...");
+					break;
+				}
+
+				}
+				break;
+			}
+
+			default:
+				log.info(" sorry invalid credentials! give correct option for login");
+
+			}
+
+		}
+	}
+}

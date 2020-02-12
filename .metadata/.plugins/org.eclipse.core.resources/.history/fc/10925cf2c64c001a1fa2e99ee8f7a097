@@ -1,0 +1,10 @@
+package com.capgemini.storemanagement.util;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
+public class Validation {
+	
+	static Logger log=LogManager.getLogger("store");
+
+}

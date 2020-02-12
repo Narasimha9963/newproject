@@ -1,0 +1,5 @@
+package com.capgemini.storemanagement.service;
+
+public interface DealerService {
+
+}

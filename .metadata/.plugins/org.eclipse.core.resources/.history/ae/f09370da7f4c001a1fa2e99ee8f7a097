@@ -1,0 +1,47 @@
+package com.capgemini.storemanagement.service;
+
+import java.util.List;
+
+import com.capgemini.storemanagement.dao.AdminDAO;
+import com.capgemini.storemanagement.dao.AdminDAOImpl;
+import com.capgemini.storemanagement.dto.Users;
+
+public class AdminServiceImpl implements AdminService{
+
+	
+	private AdminDAOImpl dao;
+
+	@Override
+	public void addManufactur(Users user) {
+		// TODO Auto-generated method stub
+		  dao.addManufactur(user);
+		  
+	}
+
+	@Override
+	public boolean updateManufactur(String userId,Users user) {
+		// TODO Auto-generated method stub
+		return dao.updateManufactur(userId,user );
+	}
+
+	@Override
+	public boolean deleteManufactur(String userId) {
+		// TODO Auto-generated method stub
+		return dao.deleteManufactur(userId);
+	}
+
+	@Override
+	public List<String> viewAllManufacturs() {
+		// TODO Auto-generated method stub
+		return dao.viewAllManufacturs();
+	}
+
+	public void login(String name, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+	
+}

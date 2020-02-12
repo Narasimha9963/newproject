@@ -1,0 +1,87 @@
+package com.capgemini.storemanagement.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.List;
+
+import com.capgemini.storemanagement.dto.Orders;
+import com.capgemini.storemanagement.dto.Products;
+import com.capgemini.storemanagement.dto.StoreUnit;
+import com.capgemini.storemanagement.dto.Users;
+
+public class DealerDAOImpl implements DealerDAO {
+
+	public Users loginDealer(String userId, String password) {
+
+		return null;
+	}
+
+	public boolean makeOrder(Orders order) {
+
+		return false;
+	}
+
+	public boolean deleteOrder(Integer orderId) {
+
+		return false;
+	}
+
+	public List<Products> showAllproducts() {
+		List<Products> productlist = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			Connection con = DriverManager.getConnection(dburl);
+			String qry = "select * from product_details";
+			Statement pstmt = con.createStatement();
+
+			productlist = (List<Products>) pstmt.executeQuery(qry);
+
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return productlist;
+	}
+
+	public List<StoreUnit> viewMyStore(Integer storeId) {
+		List<StoreUnit> storelist = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			Connection con = DriverManager.getConnection(dburl);
+			String qry = "select * from storeunit where storeId='" + storeId + "'";
+			Statement pstmt = con.createStatement();
+
+			storelist = (List<StoreUnit>) pstmt.executeQuery(qry);
+
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return storelist;
+
+	}
+
+	public List<Orders> viewMyOrders(String userId) {
+		List<Orders> orderlist = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			String dburl = "jdbc:mysql://localhost:3306/storemanagement?user=root&password=root";
+			Connection con = DriverManager.getConnection(dburl);
+			String qry = "select * from storeunit where storeId='" + userId + "'";
+			Statement pstmt = con.createStatement();
+
+			orderlist = (List<Orders>) pstmt.executeQuery(qry);
+
+		} catch (Exception e) {
+
+			e.getMessage();
+		}
+		return orderlist;
+	}
+
+}
